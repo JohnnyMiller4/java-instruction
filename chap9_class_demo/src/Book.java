@@ -1,5 +1,6 @@
 
-public class Book extends Product {
+public class Book extends Product implements Printable, Cloneable {
+//right click over book and "add unimplemented method" || implement Printable
 	
 	private String author;
 
@@ -29,9 +30,28 @@ public class Book extends Product {
 	//including the toString() of the parent class (inherited class -> to String) 
 	@Override
 	public String toString() {
-		return super.toString() + " " + author;
+		return super.toString() + " by " + author;
 	}
 	
+	//interface method
+	@Override
+	public void print() {
+		System.out.println(super.getDescription()+ " by " + author);
+		
+	}
+
+	//right-click -> Source -> Override/Implement -> Object -> Clone
+//	@Override
+//	protected Object clone() throws CloneNotSupportedException {
+//		// TODO Auto-generated method stub
+//		return super.clone();
+//	}
 	
+	//change "protected" to "public"
+		@Override
+		public Object clone() throws CloneNotSupportedException {
+			// TODO Auto-generated method stub
+			return super.clone();
+		}
 	
 }
