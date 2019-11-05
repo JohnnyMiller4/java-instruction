@@ -10,8 +10,7 @@ public class GradeConverter {
 		String choice = "y";
 		
 		System.out.println("Welcome to the Letter Grade Converter");
-		
-		//do {
+	
 		while (choice.equalsIgnoreCase("y")) {
 		
 		System.out.print("Enter numerical grade: ");
@@ -19,10 +18,7 @@ public class GradeConverter {
 			
 		int grade = Integer.parseInt(st_grade);
 		
-		if (grade > 100) {
-			System.out.println("Error");
-							}
-		else if (grade < 0) {
+		if (grade > 100 || grade < 0) {
 			System.out.println("Error");
 							}
 		else if (grade >= 88) {
@@ -45,8 +41,6 @@ public class GradeConverter {
 		
 		choice = sc.nextLine();
 												}
-	
-		//while (choice.equalsIgnoreCase("y"));
 		
 		sc.close();
 		

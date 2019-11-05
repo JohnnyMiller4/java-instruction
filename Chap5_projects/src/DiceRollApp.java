@@ -37,4 +37,5 @@ public class DiceRollApp {
 	private static double diceRoll() {
 		double diceNum = ((Math.random() * 6) + 1);
 		return diceNum;
-	}}
+	}
+}
