@@ -32,10 +32,12 @@ public class MovieRatingsApp {
 		System.out.println("Welcome to the Movie Ratings application!");
 		int option = 0;
 		
+		
+		
 		while (option!=6) {
 			displayMenu();
 		
-			option = Console.getInt("Choose a menu option:  ", 0, 7);
+			option = Console.getInt("Choose a menu option:  ", 0, 10);
 		
 			List<Movie> filteredMovies;
 			switch (option) {

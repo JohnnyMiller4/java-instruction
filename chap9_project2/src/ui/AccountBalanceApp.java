@@ -79,7 +79,7 @@ static NumberFormat cf = NumberFormat.getCurrencyInstance();
 	private static void displayBalances(CheckingAccount ca, SavingsAccount sa) {
 		//Displays balances
 		System.out.println("Checking: "+cf.format(ca.getBalance()));
-		System.out.println("Checking: "+cf.format(sa.getBalance()));
+		System.out.println("Savings: "+cf.format(sa.getBalance()));
 	}
 	
 }
