@@ -7,7 +7,7 @@ import util.Console;
 
 public class WizardInventoryApp {
 	
-	private static List<String> items = new ArrayList<>();
+private static List<String> items = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		items.add("wooden staff");

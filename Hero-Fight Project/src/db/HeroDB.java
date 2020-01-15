@@ -41,10 +41,9 @@ public class HeroDB {
 					double speed = rs.getDouble(7);
 					double energyPro = rs.getDouble(8);
 					double fightSkill = rs.getDouble(9);
-					double avg = rs.getDouble(10);
 					
 					Hero h = new Hero(id2, heroName, secretID, intelligence, strength,
-							durability, speed, energyPro, fightSkill, avg);
+							durability, speed, energyPro, fightSkill);
 					stuf.add(h);
 				}
 				return stuf;
@@ -65,7 +64,7 @@ public class HeroDB {
 				ResultSet rs = stmt.executeQuery(sql)) {
 				boolean heroExists = rs.next();
 				
-				//get Stuffy values
+				//get hero values
 				if (heroExists) {
 					//result set has a hero
 					//process the result set row
@@ -78,10 +77,9 @@ public class HeroDB {
 					double speed = rs.getDouble(7);
 					double energyPro = rs.getDouble(8);
 					double fightSkill = rs.getDouble(9);
-					double avg = rs.getDouble(10);
 					
 					h = new Hero(id2, heroName, secretID, intelligence, strength,
-						durability, speed, energyPro, fightSkill, avg);
+						durability, speed, energyPro, fightSkill);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -95,8 +93,8 @@ public class HeroDB {
 			
 			String sql = "insert into hero (name, secretID, "
 					+ "intelligence, strength, durability, speed, energyPro,"
-					+ " fightSkill, avg) " +
-			"values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ " fightSkill) " +
+			"values (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
 				ps.setString(1, h.getHeroName());
@@ -107,7 +105,6 @@ public class HeroDB {
 				ps.setDouble(6, h.getSpeed());
 				ps.setDouble(7, h.getEnergyPro());
 				ps.setDouble(8, h.getFightSkill());
-				ps.setDouble(9, h.getAvg());
 				
 				
 				rowCount = ps.executeUpdate();
@@ -137,7 +134,6 @@ public class HeroDB {
 						+"speed = ?, "
 						+"energyPro = ?, "
 						+"fightSkill = ?, "
-						+"avg = ? "
 						+"WHERE id = ?";
 			
 			try (Connection connection = getConnection();
@@ -150,7 +146,6 @@ public class HeroDB {
 				ps.setDouble(6, h.getSpeed());
 				ps.setDouble(7, h.getEnergyPro());
 				ps.setDouble(8, h.getFightSkill());
-				ps.setDouble(9, h.getAvg());
 				ps.setInt(10, h.getId());
 				
 				rowCount = ps.executeUpdate();
@@ -180,14 +175,23 @@ public class HeroDB {
 		
 		//Get Hero AVG by ID
 		public double getAvg(int id) {
-			String sql = "select avg from hero where id = " + id;
-			double avg=0;
+			String sql = "select intelligence, strength, durability, speed, energyPro, "
+					+"fightSkill from hero where id = " + id;
+			double avg = 0;
 		try (Statement stmt = getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql)) {
 			boolean heroExists = rs.next();
+			
 			//get hero avg value
 			if (heroExists) {
-				avg = rs.getDouble(1);
+				double intelligence = rs.getDouble(1);
+				double strength = rs.getDouble(2);
+				double durability = rs.getDouble(3);
+				double speed = rs.getDouble(4);
+				double energyPro = rs.getDouble(5);
+				double fightSkill = rs.getDouble(6);
+				
+				avg = ((intelligence+strength+durability+speed+energyPro+fightSkill)/6);
 			}
 		} 
 		catch (SQLException e) {
@@ -196,7 +200,7 @@ public class HeroDB {
 			return avg;
 		}
 
-		//Get Hero AVG by ID
+		//Get Hero Name by ID
 		public String getHeroName(int id) {
 				String sql = "select name from hero where id = " + id;
 				String name = null;

@@ -11,14 +11,13 @@ public class Hero {
 	private double speed;
 	private double energyPro;
 	private double fightSkill;
-	private double avg;
 	
 	public Hero() {
 		super();
 	}
 
 	public Hero(int id, String heroName, String secretID, double intelligence, double strength,
-			double durability, double speed, double energyPro, double fightSkill, double avg) {
+			double durability, double speed, double energyPro, double fightSkill) {
 		super();
 		this.id = id;
 		this.heroName = heroName;
@@ -29,11 +28,10 @@ public class Hero {
 		this.speed = speed;
 		this.energyPro = energyPro;
 		this.fightSkill = fightSkill;
-		this.avg = avg;
 	}
 	
 	public Hero(String heroName, String secretID, double intelligence, double strength,
-			double durability, double speed, double energyPro, double fightSkill, double avg) {
+			double durability, double speed, double energyPro, double fightSkill) {
 		super();
 		this.heroName = heroName;
 		this.secretID = secretID;
@@ -43,7 +41,6 @@ public class Hero {
 		this.speed = speed;
 		this.energyPro = energyPro;
 		this.fightSkill = fightSkill;
-		this.avg = avg;
 	}
 
 	public int getId() {
@@ -118,18 +115,10 @@ public class Hero {
 		this.fightSkill = fightSkill;
 	}
 
-	public double getAvg() {
-		return avg;
-	}
-
-	public void setAvg(double avg) {
-		this.avg = avg;
-	}
-
 	@Override
 	public String toString() {
 		return "ID: " + id + ", Name: " + heroName + ", Secret ID: " + secretID + ", Intelligence: "
 				+ intelligence + ", Strength: " + strength + ", Durability: " + durability + ", Speed: " + speed
-				+ ", Energy Projection: " + energyPro + ", Fighting Skills: " + fightSkill + ", Average: " + avg;
+				+ ", Energy Projection: " + energyPro + ", Fighting Skills: " + fightSkill;
 	}
 }
