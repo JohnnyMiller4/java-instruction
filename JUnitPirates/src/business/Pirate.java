@@ -42,6 +42,7 @@ public class Pirate {
 		else if (limbsRemaining == 0) {
 			limbsRemaining--;
 			totalLimbsLost++;
+			numPirates--;
 			System.out.println("AAAARGH!!!!! "+name + " died!");
 		} else {
 			limbsRemaining--;

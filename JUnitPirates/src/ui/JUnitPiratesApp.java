@@ -24,7 +24,7 @@ public class JUnitPiratesApp {
 		
 		printPirateSummary(pirates);
 		
-		System.out.println("Pirate fight!!!\n");
+		System.out.println("\nPirate fight!!!\n");
 		p2.loseALimb();
 		p4.loseALimb();
 		p2.loseALimb();
@@ -32,14 +32,14 @@ public class JUnitPiratesApp {
 		p2.loseALimb();
 		p2.loseALimb();
 		
-		System.out.println("\nWho remains?\n");
+		System.out.println("\nWho remains?");
 		printPirateSummary(pirates);
 		
 		System.out.println("Bye!");
 	}
 	
 	private static void printPirateSummary(List<Pirate> pirates) {
-		System.out.println("Pirates: ");
+		System.out.println("\nPirates: ");
 		pirates.stream().forEach(p -> System.out.println(p.toString()));
 		System.out.println("\nTotal Pirates: "+pirates.get(0).getNumPirates());
 		System.out.println("Total Limbs Lost: "+pirates.get(0).getTotalLimbsLost());
